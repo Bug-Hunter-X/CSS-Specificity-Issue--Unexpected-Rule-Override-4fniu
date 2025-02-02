@@ -1,0 +1,17 @@
+The following CSS code snippet demonstrates an issue where the expected specificity calculation doesn't occur as anticipated, leading to unexpected styling overrides.
+
+```css
+.parent {
+  color: blue;
+}
+
+#parent .child {
+  color: red; /* Expected to override .parent due to ID specificity */
+}
+
+.parent .child {
+  color: green; /* This unexpectedly overrides #parent .child */
+}
+```
+
+The expected behavior is for `#parent .child` (higher specificity) to override `.parent .child` and `.parent`. However, due to a subtle error related to how some browsers (especially older ones or those with quirks) handle the order of CSS rules and specificity calculations, the last rule (`color: green;`) may take precedence.
