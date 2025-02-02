@@ -1,0 +1,18 @@
+To solve this, we should always ensure our CSS rules are structured to be clear and avoid ambiguity. While reordering the rules might sometimes make it 'work', this is not a good practice, as it depends on CSS parsing implementation specifics.
+
+Instead, focus on making specificity unambiguous. This issue might be less prevalent in newer browsers with better compliance to CSS standards, but it's always good practice to test across multiple browsers.
+
+For example, ensure that IDs are used effectively to avoid conflicts.  Also, consider using more specific class names that are less likely to overlap.  Testing on different browsers and devices is crucial to identify and address any potential inconsistencies.
+
+```css
+/* bugSolution.css */
+.parent {
+  color: blue;
+}
+
+#parent .child {
+  color: red; /* Correctly overrides .parent */
+}
+
+/*Avoid adding same selector as #parent .child*/
+```
